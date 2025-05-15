@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top UK Universities</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1050;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      width: 90%;
+      max-width: 1000px;
+      height: 90%;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    .modal-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #333;
+      cursor: pointer;
+      z-index: 99999;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Section -->
+<section style="background-color: rgba(83, 193, 172, 0.1); padding: 40px; position: relative; overflow: hidden;">
+  <div class="container my-5">
+    <h2 class="text-center fw-bold mb-4 display-6">Top Universities in the UK</h2>
+    <div id="university-list" class="row g-4" style="margin-top: 50px;"></div>
+    <div id="pagination" class="text-center mt-4"></div>
+
+    <!-- Button to open modal -->
+   Popular Courses in UK
+
+
+  <div class="breadcrumb__shape" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;">
+    <div class="shape shape--1" style="position: absolute; top: 0; left: 0;">
+      <div class="shape-inner">
+        <img src="assets/img/shape/br_shape1.png" alt="">
+      </div>
+    </div>
+    <div class="shape shape--2" style="position: absolute; bottom: 0; right: 0;">
+      <div class="shape-inner">
+        <img src="assets/img/shape/br_shape2.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Popup -->
+<div id="popupModal" class="modal-overlay">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <iframe src="germany.html"></iframe>
+  </div>
+</div>
+
+<script>
+const universities = [
+  { 
+    name: "Comenius University in Bratislava", 
+    location: "Bratislava, Slovakia", 
+    url: "https://uniba.sk/" 
+  },
+  { 
+    name: "Slovak University of Technology in Bratislava", 
+    location: "Bratislava, Slovakia", 
+    url: "https://www.stuba.sk/" 
+  },
+  { 
+    name: "University of Economics in Bratislava", 
+    location: "Bratislava, Slovakia", 
+    url: "https://euba.sk/" 
+  },
+  { 
+    name: "Pavol Jozef Šafárik University in Košice", 
+    location: "Košice, Slovakia", 
+    url: "https://www.upjs.sk/" 
+  },
+  { 
+    name: "Technical University of Košice", 
+    location: "Košice, Slovakia", 
+    url: "https://www.tuke.sk/" 
+  },
+  { 
+    name: "Matej Bel University in Banská Bystrica", 
+    location: "Banská Bystrica, Slovakia", 
+    url: "https://www.umb.sk/" 
+  },
+  { 
+    name: "University of Žilina", 
+    location: "Žilina, Slovakia", 
+    url: "https://www.uniza.sk/" 
+  },
+  { 
+    name: "Constantine the Philosopher University in Nitra", 
+    location: "Nitra, Slovakia", 
+    url: "https://www.ukf.sk/" 
+  },
+  { 
+    name: "University of Trnava", 
+    location: "Trnava, Slovakia", 
+    url: "https://www.truni.sk/" 
+  },
+  { 
+    name: "Technical University in Zvolen", 
+    location: "Zvolen, Slovakia", 
+    url: "https://www.tuzvo.sk/" 
+  },
+  { 
+    name: "Academy of Arts in Banská Bystrica", 
+    location: "Banská Bystrica, Slovakia", 
+    url: "https://www.aku.sk/" 
+  },
+  { 
+    name: "Academy of Fine Arts and Design in Bratislava", 
+    location: "Bratislava, Slovakia", 
+    url: "https://www.vsvu.sk/" 
+  },
+  { 
+    name: "Veterinary University in Košice", 
+    location: "Košice, Slovakia", 
+    url: "https://www.uvlf.sk/" 
+  },
+  { 
+    name: "University of Prešov", 
+    location: "Prešov, Slovakia", 
+    url: "https://www.unipo.sk/" 
+  },
+  { 
+    name: "Catholic University in Ružomberok", 
+    location: "Ružomberok, Slovakia", 
+    url: "https://www.ku.sk/" 
+  },
+  { 
+    name: "Slovak Medical University in Bratislava", 
+    location: "Bratislava, Slovakia", 
+    url: "https://www.szu.sk/" 
+  },
+  { 
+    name: "University of SS. Cyril and Methodius in Trnava", 
+    location: "Trnava, Slovakia", 
+    url: "https://www.ucm.sk/" 
+  },
+  { 
+    name: "Armed Forces Academy of General Milan Rastislav Štefánik", 
+    location: "Liptovský Mikuláš, Slovakia", 
+    url: "https://www.aos.sk/" 
+  },
+  { 
+    name: "University of Performing Arts in Bratislava", 
+    location: "Bratislava, Slovakia", 
+    url: "https://www.vsmuv.sk/" 
+  },
+  { 
+    name: "International School of Law and Business", 
+    location: "Bratislava, Slovakia", 
+    url: "https://www.vspp.sk/" 
+  }
+];
+    
+      const itemsPerPage = 6;
+      let currentPage = 1;
+    
+      function renderUniversities() {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const universitiesToShow = universities.slice(startIndex, endIndex);
+    
+        const universityListContainer = document.getElementById('university-list');
+        universityListContainer.innerHTML = '';
+    
+        universitiesToShow.forEach(university => {
+          const card = document.createElement('div');
+          card.className = 'd-flex bg-white p-4 rounded-4 shadow-sm align-items-center mb-4 transition hover-shadow university-card';
+
+          card.className = 'd-flex bg-white p-4 rounded-4 shadow-sm align-items-center mb-4 transition hover-shadow';
+          card.style.borderLeft = '5px solid #1F3B70';
+          card.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.05)';
+          card.style.transition = 'transform 0.3s ease';
+          card.style.maxWidth = '600px';  // You can adjust this value as needed
+card.style.margin = '0 auto';   // Center the card horizontally
+
+          card.onmouseover = () => card.style.transform = 'translateY(-5px)';
+          card.onmouseout = () => card.style.transform = 'translateY(0)';
+    
+          const logo = document.createElement('img');
+          logo.src = `https://www.google.com/s2/favicons?sz=64&domain=${new URL(university.url).hostname}`;
+          logo.alt = `${university.name} Logo`;
+          logo.style.width = '60px';
+          logo.style.height = '60px';
+          logo.style.borderRadius = '50%';
+          logo.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
+          logo.className = 'me-4';
+    
+          const info = document.createElement('div');
+    
+          const title = document.createElement('h5');
+          title.className = 'fw-semibold mb-1';
+          title.innerHTML = `<a href="${university.url}" target="_blank" style="text-decoration: none; color: #333;">${university.name}</a>`;
+    
+          const location = document.createElement('small');
+          location.className = 'text-muted';
+          location.textContent = university.location;
+    
+          info.appendChild(title);
+          info.appendChild(location);
+    
+          card.appendChild(logo);
+          card.appendChild(info);
+    
+          universityListContainer.appendChild(card);
+        });
+      }
+    
+      function renderPagination() {
+  const pageCount = Math.ceil(universities.length / itemsPerPage);
+  const paginationContainer = document.getElementById('pagination');
+  paginationContainer.innerHTML = '';
+
+  const createPageLink = (label, page, isActive = false, isArrow = false) => {
+    const pageLink = document.createElement('a');
+    pageLink.href = '#';
+    pageLink.textContent = label;
+    pageLink.style.margin = '0 5px';
+    pageLink.style.padding = '8px 12px';
+    pageLink.style.borderRadius = '6px';
+    pageLink.style.textDecoration = 'none';
+    pageLink.style.border = '1px solid #ccc';
+    pageLink.style.color = isActive ? '#fff' : '#333';
+    pageLink.style.backgroundColor = isActive ? '#1F3B70' : '#fff';
+    pageLink.style.transition = 'all 0.2s ease';
+    pageLink.style.fontWeight = isArrow ? 'bold' : 'normal';
+
+    pageLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (page >= 1 && page <= pageCount && page !== currentPage) {
+        currentPage = page;
+        renderUniversities();
+        renderPagination();
+      }
+    });
+
+    return pageLink;
+  };
+
+  // ← Prev
+  if (currentPage > 1) {
+    paginationContainer.appendChild(createPageLink('←', currentPage - 1, false, true));
+  }
+
+  // Determine which 3 pages to show
+  let start = Math.max(1, currentPage - 1);
+  let end = Math.min(pageCount, start + 2);
+
+  // Adjust start if we are near the end
+  if (end - start < 2 && start > 1) {
+    start = Math.max(1, end - 2);
+  }
+
+  for (let i = start; i <= end; i++) {
+    paginationContainer.appendChild(createPageLink(i, i, i === currentPage));
+  }
+
+  // ... if more pages after
+  if (end < pageCount) {
+    const dots = document.createElement('span');
+    dots.textContent = '...';
+    dots.style.margin = '0 8px';
+    paginationContainer.appendChild(dots);
+  }
+
+  // → Next
+  if (currentPage < pageCount) {
+    paginationContainer.appendChild(createPageLink('→', currentPage + 1, false, true));
+  }
+}
+
+
+    
+      // Initial render
+      renderUniversities();
+      renderPagination();
+    </script>
+
+</body>
+</html>
