@@ -7376,7 +7376,7 @@ a.ui-button:active, .ui-button:active,
   .breadcrumb__title {
     font-size: 65px;
     font-weight: 700;
-    margin-bottom: 22px; }
+    margin-bottom: 150px; }
     @media (max-width: 1199px) {
       .breadcrumb__title {
         font-size: 50px; } }
@@ -9258,13 +9258,13 @@ body {
 }
 
 .courses-list li i {
+  border: #00CC99;
   color: var(--accent-teal);
   margin-right: 12px;
   font-size: 0.9rem;
 }
 
 .university-card {
-  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
   border-radius: var(--border-radius);
   padding: 30px;
   text-align: center;
