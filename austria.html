@@ -51,14 +51,12 @@
 <!-- Section -->
 <section style="background-color: rgba(83, 193, 172, 0.1); padding: 40px; position: relative; overflow: hidden;">
   <div class="container my-5">
-    <h2 class="text-center fw-bold mb-4 display-6">Top Universities in the UK</h2>
+    <h2 class="text-center fw-bold mb-4 display-6">Top Universities in the Austria</h2>
     <div id="university-list" class="row g-4" style="margin-top: 50px;"></div>
     <div id="pagination" class="text-center mt-4"></div>
 
     <!-- Button to open modal -->
-    <div class="text-center mt-5">
-      <button class="btn btn-primary px-4 py-2" onclick="openModal()">View Universities in Germany</button>
-    </div>
+   
   </div>
 
   <div class="breadcrumb__shape" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;">
@@ -79,7 +77,7 @@
 <div id="popupModal" class="modal-overlay">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal()">&times;</span>
-    <iframe src="germany.html"></iframe>
+    <iframe src="austria.html"></iframe>
   </div>
 </div>
 
@@ -100,11 +98,7 @@
     location: "Vienna, Austria (Except students from Punjab & South India)", 
     url: "https://www.ibs-b.hu/" 
   },
-  { 
-    name: "Schiller International University - Heidelberg Campus", 
-    location: "Heidelberg, Germany", 
-    url: "https://www.schiller.edu/" 
-  }
+  
 ];
       const itemsPerPage = 6;
       let currentPage = 1;
